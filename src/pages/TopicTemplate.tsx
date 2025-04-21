@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Layout } from "@/components/ui/layout";
 import TopicHero from "@/components/topic-hero";
@@ -7,7 +6,25 @@ import ResourceCard from "@/components/resource-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit } from "lucide-react";
 
-// Data structure for all topics
+const downloadRiskRegister = () => {
+  const csvRows = [
+    ["Risk Description", "Likelihood", "Impact", "Mitigation", "Owner", "Status"],
+    ["Example: Project delays due to resource shortage", "High", "Medium", "Allocate buffer time and cross-train staff", "Project Lead", "Ongoing"],
+    ["Example: Budget overrun", "Medium", "High", "Monitor expenses bi-weekly", "Finance Manager", "Monitoring"]
+  ];
+  const csvContent = csvRows.map((row) => row.map((cell) => `"${cell}"`).join(",")).join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "risk-register-template.csv";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  window.URL.revokeObjectURL(url);
+};
+
 const topicData: Record<string, {
   title: string;
   description: string;
@@ -133,7 +150,6 @@ const topicData: Record<string, {
       }
     ]
   },
-  // Additional topics using the same structure...
   "ethics": {
     title: "Ethics",
     description: "Ethical considerations in project management",
@@ -472,7 +488,7 @@ const topicData: Record<string, {
 export default function TopicTemplate() {
   const { topicId } = useParams<{ topicId: string }>();
   const topic = topicId && topicData[topicId] ? topicData[topicId] : null;
-  
+
   if (!topic) {
     return (
       <Layout>
@@ -483,29 +499,103 @@ export default function TopicTemplate() {
       </Layout>
     );
   }
-  
+
   const IconComponent = topic.icon;
+
+  const topicImages: Record<string, string> = {
+    teams: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
+    risk: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=900&q=80",
+    leadership: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
+    ethics: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
+    sustainability: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80",
+    governance: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=900&q=80",
+    strategy: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=900&q=80",
+    planning: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+    implementation: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=900&q=80",
+    stakeholders: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
+    methodologies: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+    ai: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+  };
 
   return (
     <Layout>
+      <div className="relative mb-8">
+        <img
+          src={topicImages[topicId || "teams"] || topicImages["teams"]}
+          alt={topic.title + " illustration"}
+          className="w-full h-60 md:h-80 object-cover rounded-lg shadow"
+        />
+        <div className="absolute top-4 left-4 bg-black/40 rounded-full p-2">
+          <IconComponent size={40} className="text-white drop-shadow" />
+        </div>
+      </div>
       <TopicHero
         title={topic.title}
         description={topic.description}
         icon={<IconComponent size={32} className="text-white" />}
         className="mb-8 rounded-none"
       />
-      
+
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto mb-8">
           <p className="text-lg text-muted-foreground">{topic.introduction}</p>
         </div>
-        
+
+        {topicId === "risk" && (
+          <div className="max-w-3xl mx-auto mb-12">
+            <h2 className="text-2xl font-semibold mb-4">Download Risk Register</h2>
+            <p className="mb-4 text-muted-foreground">
+              Use this downloadable template to start managing risks for your project.
+            </p>
+            <div className="mb-4 flex gap-2">
+              <button
+                onClick={downloadRiskRegister}
+                className="bg-pmblue text-white px-5 py-2 rounded shadow hover:bg-pmblue-dark transition"
+              >
+                Download Risk Register (CSV)
+              </button>
+            </div>
+            <div className="overflow-auto border rounded-lg bg-white shadow mb-2">
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="py-2 px-3 font-semibold">Risk Description</th>
+                    <th className="py-2 px-3 font-semibold">Likelihood</th>
+                    <th className="py-2 px-3 font-semibold">Impact</th>
+                    <th className="py-2 px-3 font-semibold">Mitigation</th>
+                    <th className="py-2 px-3 font-semibold">Owner</th>
+                    <th className="py-2 px-3 font-semibold">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="py-2 px-3">Project delays due to resource shortage</td>
+                    <td className="py-2 px-3">High</td>
+                    <td className="py-2 px-3">Medium</td>
+                    <td className="py-2 px-3">Allocate buffer time and cross-train staff</td>
+                    <td className="py-2 px-3">Project Lead</td>
+                    <td className="py-2 px-3">Ongoing</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3">Budget overrun</td>
+                    <td className="py-2 px-3">Medium</td>
+                    <td className="py-2 px-3">High</td>
+                    <td className="py-2 px-3">Monitor expenses bi-weekly</td>
+                    <td className="py-2 px-3">Finance Manager</td>
+                    <td className="py-2 px-3">Monitoring</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
         <Tabs defaultValue="overview" className="max-w-4xl mx-auto mb-12">
           <TabsList className="mb-6">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="resources">Resources</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="overview">
             <div className="bg-card p-6 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold mb-4">Key Topics</h2>
@@ -521,7 +611,7 @@ export default function TopicTemplate() {
               </ul>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="resources">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {topic.resources.map((resource, index) => (
@@ -530,7 +620,17 @@ export default function TopicTemplate() {
                   title={resource.title}
                   description={resource.description}
                   type={resource.type}
-                  link={resource.link}
+                  link={
+                    resource.link === "https://www.pmi.org/learning/library/simple-risk-management-approach-9662"
+                      ? "https://www.simplilearn.com/simple-risk-management-guide-article"
+                      : resource.link === "https://www.pmi.org/learning/library/leadership-skills-project-managers-need-11127"
+                      ? "https://www.cio.com/article/222665/project-management-project-management-leadership-skills.html"
+                      : resource.link === "https://www.pmi.org/learning/library/ethical-decision-making-framework-9602"
+                      ? "https://www.projectmanager.com/blog/ethical-decision-making"
+                      : resource.link === "https://www.strategyex.com/blog/project-selection-toolkit"
+                      ? "https://www.smartsheet.com/strategic-project-selection"
+                      : resource.link // fallback: use original if not replaced above
+                  }
                   tags={resource.tags}
                 />
               ))}

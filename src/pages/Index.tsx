@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/ui/layout";
 import { Link } from "react-router-dom";
@@ -89,9 +88,16 @@ export default function Index() {
   return (
     <Layout>
       <section className="relative bg-gradient-to-b from-pmblue to-pmblue-dark text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <img
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+          alt="Teamwork illustration"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
+        />
+        <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">A Guide to Project Management</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow">
+              A Guide to Project Management
+            </h1>
             <p className="text-xl md:text-2xl mb-8">
               An accessible, easy-to-use guide for small businesses and charities working in Ireland
             </p>
@@ -114,8 +120,12 @@ export default function Index() {
           <p className="text-lg text-muted-foreground">
             This guide provides practical resources for small businesses and charities in Ireland to improve their project management capabilities.
           </p>
+          <img
+            src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=700&q=80"
+            alt="People collaborating"
+            className="mx-auto rounded-lg mt-8 shadow-lg w-full max-w-lg"
+          />
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topicCards.map((card) => (
             <Link 
@@ -144,7 +154,11 @@ export default function Index() {
             <p className="text-lg text-muted-foreground text-center mb-12">
               Our guide includes a variety of resource formats to suit different learning preferences.
             </p>
-            
+            <img
+              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+              alt="Resources illustration"
+              className="mx-auto mb-10 rounded-lg w-full max-w-md shadow"
+            />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
                 <div className="h-12 w-12 rounded-full bg-blue-100 text-blue-800 mx-auto flex items-center justify-center mb-4">
@@ -186,6 +200,11 @@ export default function Index() {
           <p className="text-lg text-muted-foreground">
             Created specifically for Irish small businesses and charities, this guide addresses the unique challenges you face.
           </p>
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
+            alt="Project management concept"
+            className="mx-auto mt-8 rounded-lg shadow w-full max-w-xs"
+          />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
