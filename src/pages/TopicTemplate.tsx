@@ -1,128 +1,108 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { Layout } from "@/components/ui/layout";
 import TopicHero from "@/components/topic-hero";
 import ResourceCard from "@/components/resource-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
 
-const keyTopicExplanations: Record<string, string[]> = {
+const keyTopicExplanationsSimple: Record<string, string[]> = {
   "teams": [
-    "Learn the stages of team development from forming to performing, and how each stage impacts team success.",
-    "Discover how cultivating trust and psychological safety can improve collaboration and performance.",
-    "Understand common sources of team conflict and practical steps for healthy resolution.",
-    "Explore ways to delegate responsibilities effectively to build team capacity and accountability.",
-    "Find out how structured and open communication can keep your team aligned and productive.",
-    "Examine tools and best practices for managing teams that aren’t always in the same location."
+    "Every team goes through stages—forming, storming, norming, performing—each with distinct challenges and opportunities.",
+    "When team members feel safe to share ideas without judgement, collaboration and trust blossom.",
+    "Disagreements are natural; resolving them positively helps teams grow and avoid bigger issues.",
+    "Sharing tasks allows everyone to shine and ensures project workloads are manageable.",
+    "Open, honest communication keeps everyone on track and reduces misunderstandings.",
+    "Remote work or distributed teams require extra planning for meetings and clear digital communication."
   ],
   "risk": [
-    "Identify potential threats to your project using methods like brainstorming, checklists, and expert input.",
-    "Learn to assess the probability and impact of risks using qualitative and quantitative techniques.",
-    "Develop actionable plans to address, reduce, or accept specific project risks.",
-    "Implement a continuous process to review, track and adjust to risks as your project progresses.",
-    "See how to create and use a basic risk register to log, monitor, and communicate risks.",
-    "Communicate risks and responses clearly to stakeholders to keep everyone informed and prepared."
+    "Seek out what could go wrong by listing possible threats early on.",
+    "Judge how likely and how serious each risk is—some may be rare but have big consequences.",
+    "Prepare simple plans to dodge, reduce, or accept each risk before they become problems.",
+    "Check on risks regularly and update your plans as the project evolves.",
+    "A risk register is a simple table to track risks, actions, and owners.",
+    "Let everyone involved know about risks and how you’re handling them to keep surprises to a minimum."
   ],
   "leadership": [
-    "Differentiate between leading a project and managing its execution—both are vital.",
-    "Apply different leadership styles to suit the needs of your project and team.",
-    "Lead your team confidently through changes, setbacks, and uncertain conditions.",
-    "Use structured approaches to make informed decisions under time and information constraints.",
-    "Discover strategies for motivating team members and stakeholders even without formal authority.",
-    "Build a presence that inspires trust and confidence in your leadership role."
+    "Managing is about tasks, but leadership is about inspiring and guiding people toward success.",
+    "Adapt your style—sometimes firm direction is needed, sometimes a gentle nudge works best.",
+    "Uncertainty is normal—lead confidently and keep your team steady through change.",
+    "Use simple frameworks or checklists to make decisions, especially under time pressure.",
+    "You don’t need a big title to influence others—build trust and be clear about your vision.",
+    "Act with honesty and consistency; people follow leaders who are trustworthy and reliable."
   ],
   "ethics": [
-    "Model ethical behavior in all aspects of project leadership to build credibility and trust.",
-    "Navigate competing interests while maintaining fairness to all parties involved.",
-    "Promote openness and responsibility for decisions and project outcomes.",
-    "Ensure your procurement process and supplier relationships are ethical and transparent.",
-    "Learn practical ways to handle difficult moral dilemmas within the project.",
-    "Integrate social and community responsibilities into your project’s success metrics."
+    "Leading by example means making choices that are fair and honest at every stage.",
+    "Find a balance between competing needs so all parties are respected.",
+    "Be open about your actions, and take responsibility when things don't go as planned.",
+    "Choose suppliers and partners based not just on price but also on their ethical standards.",
+    "When faced with a tough choice, use a step-by-step process to find the best solution.",
+    "Consider the impact your project has on the wider community, not just on your team."
   ],
   "sustainability": [
-    "Balance environmental, social, and financial factors when managing projects for a sustainable future.",
-    "Procure goods and services in a way that supports sustainability objectives.",
-    "Track and report how your project affects people, planet, and profit.",
-    "Use green methodologies and practices to minimize negative environmental impact.",
-    "Engage project stakeholders in sustainability planning and encourage active participation.",
-    "Plan for your project’s long-term success, including ongoing benefits and minimal negative impact."
+    "Projects can help people, the environment, and your bottom line—you don’t have to choose just one.",
+    "Buy goods and services from sources that also care about being eco-friendly and fair.",
+    "Track and report on the good (and not-so-good) your project produces for people and the planet.",
+    "Small changes, like reducing waste, add up over time toward greener project management.",
+    "Invite everyone—staff, volunteers, community—to help build in sustainability from the start.",
+    "Think ahead: Will your project keep having a positive impact once it’s finished?"
   ],
   "governance": [
-    "Understand basic governance concepts and how they drive successful projects.",
-    "Design streamlined governance structures suited for smaller organizations.",
-    "Create clear processes for project decision-making and documentation.",
-    "Monitor project progress and ensure effective reporting to oversight bodies.",
-    "Clarify roles and responsibilities to avoid confusion and increase accountability.",
-    "Stay compliant with all relevant laws and regulations during the project."
+    "Governance is about making sure projects stay on the right track and follow agreed rules.",
+    "Even small organizations benefit from clear, simple decision-making structures.",
+    "Use written processes for decisions and approvals so nothing falls through the cracks.",
+    "Check progress regularly and report honestly to those overseeing the project.",
+    "Knowing who does what avoids confusion and finger-pointing.",
+    "Stay legal by keeping up with regulations and documenting key project steps."
   ],
   "strategy": [
-    "Make sure every project supports the overall mission and goals of your organization.",
-    "Select and prioritize projects that deliver the most value based on available resources.",
-    "Manage multiple projects as a portfolio to achieve strategic goals.",
-    "Allocate limited time, money, and people where they're needed most for impact.",
-    "Measure and evaluate whether your projects are delivering strategic benefits.",
-    "Establish a process to ensure the expected benefits of each project are realized."
+    "Tie every project back to the big goals of your business or charity.",
+    "Pick projects that make the best use of what you have and are likely to succeed.",
+    "If you run several projects, look for ways they support each other.",
+    "Use resources where they have the most benefit—know what's essential versus nice-to-have.",
+    "Regularly check if your projects are moving you closer to your strategic objectives.",
+    "Plan for and track the actual benefits realized, not just the activities completed."
   ],
   "planning": [
-    "Define what your project aims to accomplish and control changes to the scope.",
-    "Break down big tasks into manageable parts with a work breakdown structure.",
-    "Build realistic schedules to keep your project on track.",
-    "Plan resource use efficiently, especially for small teams with limited capacity.",
-    "Create effective budgets that match available funding and needs.",
-    "Prepare for surprises by building flexibility into your plans."
+    "Be clear about what your project will (and won’t) deliver, and stick to it.",
+    "Break big goals into smaller, manageable tasks to make progress easier.",
+    "Build timelines that are realistic, including buffers for the unexpected.",
+    "Plan out what people, tools, or materials you’ll need—especially if resources are tight.",
+    "Create budgets that show not only costs but also how you’ll stay within your means.",
+    "Flexibility lets you adapt to changes instead of being stalled by them."
   ],
   "implementation": [
-    "Learn how to move from planning to action and keep plans on track.",
-    "Track progress and adjust tasks or priorities when slippage occurs.",
-    "Deal with issues quickly before they become bigger problems.",
-    "Manage and communicate changes to keep stakeholders aligned.",
-    "Check your project work for quality and address problems early.",
-    "Measure project performance with clear indicators and adjust as necessary."
+    "Turn your plans into action by breaking them down into small, doable steps.",
+    "Track if you’re on schedule using regular check-ins and simple status updates.",
+    "Tackle obstacles as soon as they pop up to avoid delays.",
+    "Let everyone know about changes as soon as possible to keep alignment.",
+    "Check your work as you go so you don't have to fix big mistakes later.",
+    "Use simple measures, like checklists or metrics, to see if work is on track."
   ],
   "stakeholders": [
-    "Find out who is affected by your project and understand their needs.",
-    "Develop a plan to engage stakeholders and keep them involved throughout.",
-    "Communicate with different stakeholder groups in a clear and timely way.",
-    "Set, manage, and reset stakeholder expectations as the project evolves.",
-    "Keep important supporters on board so your project has the backing it needs.",
-    "Handle disagreements and conflicts among stakeholders fairly."
+    "Make a list of everyone who cares about, or is affected by, your project.",
+    "A basic plan for talking to stakeholders prevents last-minute surprises or complaints.",
+    "Reach out clearly and regularly so people stay informed and engaged.",
+    "Set goals early, and adjust as things change so expectations stay realistic.",
+    "Bring key supporters close—they can help you solve problems faster.",
+    "Deal with disagreements quickly and fairly so they don’t derail your project."
   ],
   "methodologies": [
-    "Compare structured waterfall methods to agile, flexible ways of working.",
-    "Understand the strengths and use cases for the waterfall methodology.",
-    "See how Scrum and Kanban work well for small, adaptive teams.",
-    "Mix and match approaches to suit your organization’s unique needs.",
-    "Evaluate and select the best project method for your specific situation.",
-    "Scale project management methods effectively, whether your organization is large or small."
+    "Traditional methods plan everything up front; agile ones adapt as you go.",
+    "Waterfall is step-by-step; best for projects with clear, unchanging needs.",
+    "Scrum and Kanban allow teams to adjust quickly and deliver in small chunks.",
+    "Mixing methods can help you get the best of both worlds.",
+    "Choose the method that fits your resources, team skills, and project goals.",
+    "Bigger organizations need more formal process; small teams work best with light but clear structure."
   ],
   "ai": [
-    "Discover free and affordable tools that can automate and improve planning and scheduling.",
-    "Use AI to predict and analyze possible project outcomes more accurately.",
-    "Automate repetitive project tasks (like scheduling) to save time and reduce errors.",
-    "Let AI help you assign resources to the right tasks for maximum efficiency.",
-    "Leverage AI-powered natural language tools for fast, accurate documentation.",
-    "Uncover easy AI solutions that work for small organizations with limited tech support."
+    "Free and easy-to-use AI tools can automate tasks like setting up timelines or reminders.",
+    "AI helps you see patterns in data so you can predict problems before they happen.",
+    "Let a computer handle repetitive admin work—freeing up your team for important decisions.",
+    "AI can help you assign the right people or resources to the right jobs automatically.",
+    "Writing reports and notes can be faster—AI can tidy up or summarize your documents.",
+    "Plenty of user-friendly AI tools are out there, even for organizations without much IT support."
   ]
-};
-
-const downloadRiskRegister = () => {
-  const csvRows = [
-    ["Risk Description", "Likelihood", "Impact", "Mitigation", "Owner", "Status"],
-    ["Example: Project delays due to resource shortage", "High", "Medium", "Allocate buffer time and cross-train staff", "Project Lead", "Ongoing"],
-    ["Example: Budget overrun", "Medium", "High", "Monitor expenses bi-weekly", "Finance Manager", "Monitoring"]
-  ];
-  const csvContent = csvRows.map((row) => row.map((cell) => `"${cell}"`).join(",")).join("\n");
-  const blob = new Blob([csvContent], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "risk-register-template.csv";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  window.URL.revokeObjectURL(url);
 };
 
 const topicData: Record<string, {
@@ -715,7 +695,7 @@ export default function TopicTemplate() {
           <TabsContent value="overview">
             <div className="bg-card p-6 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold mb-4">Key Topics</h2>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 {topic.keyPoints.map((point, index) => (
                   <li key={index} className="flex flex-col md:flex-row items-start gap-2">
                     <div className="h-8 w-8 rounded-full bg-pmblue flex items-center justify-center text-white mr-2 flex-shrink-0 font-bold text-lg">
@@ -724,7 +704,7 @@ export default function TopicTemplate() {
                     <div>
                       <span className="font-medium">{point}</span>
                       <div className="text-muted-foreground text-sm mt-1">
-                        {keyTopicExplanations[topicId as string]?.[index]}
+                        {keyTopicExplanationsSimple[topicId as string]?.[index] || null}
                       </div>
                     </div>
                   </li>
@@ -758,9 +738,6 @@ export default function TopicTemplate() {
             </div>
           </TabsContent>
         </Tabs>
-        <div className="max-w-2xl mx-auto my-20">
-          <ContactForm />
-        </div>
       </div>
     </Layout>
   );

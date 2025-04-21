@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/ui/layout";
 import { Link } from "react-router-dom";
 import { ChevronRight, Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit, FileText, Video, Headphones } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 const topicCards = [
   { 
@@ -198,7 +199,7 @@ export default function Index() {
       <section className="py-16 container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Why This Guide?</h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg mb-4" style={{ color: "#1A1F2C" }}>
             Created specifically for Irish small businesses and charities, this guide addresses the unique challenges you face.
           </p>
           <img
@@ -261,6 +262,12 @@ export default function Index() {
           <Button size="lg" asChild className="bg-white text-pmblue hover:bg-gray-100">
             <Link to="/topic/teams">Explore Topics Now</Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="py-16 container mx-auto px-4">
+        <div className="max-w-2xl mx-auto">
+          <ContactForm />
         </div>
       </section>
     </Layout>
