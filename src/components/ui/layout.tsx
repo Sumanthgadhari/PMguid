@@ -62,8 +62,7 @@ export function Layout({ children }: LayoutProps) {
           
           <div className="flex-1 flex flex-col">
             <header className="border-b p-4 bg-white flex justify-between items-center">
-              {/* Fix: Ensure SidebarTrigger has exactly one child element */}
-              <SidebarTrigger asChild>
+              <SidebarTrigger>
                 <Button variant="ghost" size="icon">
                   <Menu size={20} />
                 </Button>
