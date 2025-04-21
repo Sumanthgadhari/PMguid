@@ -717,17 +717,19 @@ export default function TopicTemplate() {
           <TabsContent value="overview">
             <div className="bg-card p-6 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold mb-4">Key Topics</h2>
-              <ul className="space-y-6">
+              <ul className="space-y-8">
                 {topic.keyPoints.map((point, index) => (
-                  <li key={index} className="flex flex-col md:flex-row items-start gap-2">
-                    <div className="h-8 w-8 rounded-full bg-pmblue flex items-center justify-center text-white mr-2 flex-shrink-0 font-bold text-lg">
+                  <li key={index} className="flex items-start gap-4">
+                    <div className="h-9 w-9 rounded-full bg-pmblue flex items-center justify-center text-white mr-2 flex-shrink-0 font-bold text-lg mt-1">
                       {index + 1}
                     </div>
                     <div>
-                      <span className="font-medium">{point}</span>
-                      <div className="text-muted-foreground text-sm mt-1">
-                        {keyTopicExplanationsSimple[topicId as string]?.[index] || null}
-                      </div>
+                      <span className="font-semibold block text-lg mb-2">{point}</span>
+                      <p className="text-muted-foreground text-base leading-relaxed">
+                        {keyTopicExplanationsSimple[topicId as string]?.[index]
+                          ? keyTopicExplanationsSimple[topicId as string][index]
+                          : ""}
+                      </p>
                     </div>
                   </li>
                 ))}
