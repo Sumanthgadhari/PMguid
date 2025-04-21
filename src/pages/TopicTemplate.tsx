@@ -580,6 +580,28 @@ const topicImages: Record<string, string> = {
   ai: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
 };
 
+const downloadRiskRegister = () => {
+  const csvContent = `Risk Description,Likelihood,Impact,Mitigation,Owner,Status
+Project delays due to resource shortage,High,Medium,Allocate buffer time and cross-train staff,Project Lead,Ongoing
+Budget overrun,Medium,High,Monitor expenses bi-weekly,Finance Manager,Monitoring
+Supplier failure,Low,High,Have backup suppliers identified,Procurement Manager,Controlled
+Scope creep,High,Medium,Document all change requests,Project Lead,Ongoing
+Team turnover,Medium,Medium,Document processes and cross-train team members,HR Manager,Monitoring`;
+  
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  
+  const link = document.createElement("a");
+  const url = URL.createObjectURL(blob);
+  
+  link.setAttribute("href", url);
+  link.setAttribute("download", "project_risk_register_template.csv");
+  link.style.visibility = "hidden";
+  
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 export default function TopicTemplate() {
   const { topicId } = useParams<{ topicId: string }>();
   const topic = topicId && topicData[topicId] ? topicData[topicId] : null;
