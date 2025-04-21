@@ -131,13 +131,14 @@ export default function Index() {
             <Link 
               key={card.title} 
               to={card.href}
-              className="border rounded-lg p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-card"
+              className="border rounded-lg p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-[#1A1F2C]"
+              // Dark background for card
             >
               <div className="h-12 w-12 rounded-full bg-pmblue/10 text-pmblue flex items-center justify-center mb-4">
                 <card.icon className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-medium mb-2">{card.title}</h3>
-              <p className="text-muted-foreground mb-4 flex-1">{card.description}</p>
+              <h3 className="text-xl font-medium mb-2 text-white">{card.title}</h3>
+              <p className="text-[#EEE] mb-4 flex-1">{card.description}</p>
               <div className="flex items-center text-pmblue font-medium">
                 <span>Learn more</span>
                 <ChevronRight className="h-4 w-4 ml-1" />

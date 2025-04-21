@@ -5,6 +5,106 @@ import TopicHero from "@/components/topic-hero";
 import ResourceCard from "@/components/resource-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
+
+const keyTopicExplanations: Record<string, string[]> = {
+  "teams": [
+    "Learn the stages of team development from forming to performing, and how each stage impacts team success.",
+    "Discover how cultivating trust and psychological safety can improve collaboration and performance.",
+    "Understand common sources of team conflict and practical steps for healthy resolution.",
+    "Explore ways to delegate responsibilities effectively to build team capacity and accountability.",
+    "Find out how structured and open communication can keep your team aligned and productive.",
+    "Examine tools and best practices for managing teams that aren’t always in the same location."
+  ],
+  "risk": [
+    "Identify potential threats to your project using methods like brainstorming, checklists, and expert input.",
+    "Learn to assess the probability and impact of risks using qualitative and quantitative techniques.",
+    "Develop actionable plans to address, reduce, or accept specific project risks.",
+    "Implement a continuous process to review, track and adjust to risks as your project progresses.",
+    "See how to create and use a basic risk register to log, monitor, and communicate risks.",
+    "Communicate risks and responses clearly to stakeholders to keep everyone informed and prepared."
+  ],
+  "leadership": [
+    "Differentiate between leading a project and managing its execution—both are vital.",
+    "Apply different leadership styles to suit the needs of your project and team.",
+    "Lead your team confidently through changes, setbacks, and uncertain conditions.",
+    "Use structured approaches to make informed decisions under time and information constraints.",
+    "Discover strategies for motivating team members and stakeholders even without formal authority.",
+    "Build a presence that inspires trust and confidence in your leadership role."
+  ],
+  "ethics": [
+    "Model ethical behavior in all aspects of project leadership to build credibility and trust.",
+    "Navigate competing interests while maintaining fairness to all parties involved.",
+    "Promote openness and responsibility for decisions and project outcomes.",
+    "Ensure your procurement process and supplier relationships are ethical and transparent.",
+    "Learn practical ways to handle difficult moral dilemmas within the project.",
+    "Integrate social and community responsibilities into your project’s success metrics."
+  ],
+  "sustainability": [
+    "Balance environmental, social, and financial factors when managing projects for a sustainable future.",
+    "Procure goods and services in a way that supports sustainability objectives.",
+    "Track and report how your project affects people, planet, and profit.",
+    "Use green methodologies and practices to minimize negative environmental impact.",
+    "Engage project stakeholders in sustainability planning and encourage active participation.",
+    "Plan for your project’s long-term success, including ongoing benefits and minimal negative impact."
+  ],
+  "governance": [
+    "Understand basic governance concepts and how they drive successful projects.",
+    "Design streamlined governance structures suited for smaller organizations.",
+    "Create clear processes for project decision-making and documentation.",
+    "Monitor project progress and ensure effective reporting to oversight bodies.",
+    "Clarify roles and responsibilities to avoid confusion and increase accountability.",
+    "Stay compliant with all relevant laws and regulations during the project."
+  ],
+  "strategy": [
+    "Make sure every project supports the overall mission and goals of your organization.",
+    "Select and prioritize projects that deliver the most value based on available resources.",
+    "Manage multiple projects as a portfolio to achieve strategic goals.",
+    "Allocate limited time, money, and people where they're needed most for impact.",
+    "Measure and evaluate whether your projects are delivering strategic benefits.",
+    "Establish a process to ensure the expected benefits of each project are realized."
+  ],
+  "planning": [
+    "Define what your project aims to accomplish and control changes to the scope.",
+    "Break down big tasks into manageable parts with a work breakdown structure.",
+    "Build realistic schedules to keep your project on track.",
+    "Plan resource use efficiently, especially for small teams with limited capacity.",
+    "Create effective budgets that match available funding and needs.",
+    "Prepare for surprises by building flexibility into your plans."
+  ],
+  "implementation": [
+    "Learn how to move from planning to action and keep plans on track.",
+    "Track progress and adjust tasks or priorities when slippage occurs.",
+    "Deal with issues quickly before they become bigger problems.",
+    "Manage and communicate changes to keep stakeholders aligned.",
+    "Check your project work for quality and address problems early.",
+    "Measure project performance with clear indicators and adjust as necessary."
+  ],
+  "stakeholders": [
+    "Find out who is affected by your project and understand their needs.",
+    "Develop a plan to engage stakeholders and keep them involved throughout.",
+    "Communicate with different stakeholder groups in a clear and timely way.",
+    "Set, manage, and reset stakeholder expectations as the project evolves.",
+    "Keep important supporters on board so your project has the backing it needs.",
+    "Handle disagreements and conflicts among stakeholders fairly."
+  ],
+  "methodologies": [
+    "Compare structured waterfall methods to agile, flexible ways of working.",
+    "Understand the strengths and use cases for the waterfall methodology.",
+    "See how Scrum and Kanban work well for small, adaptive teams.",
+    "Mix and match approaches to suit your organization’s unique needs.",
+    "Evaluate and select the best project method for your specific situation.",
+    "Scale project management methods effectively, whether your organization is large or small."
+  ],
+  "ai": [
+    "Discover free and affordable tools that can automate and improve planning and scheduling.",
+    "Use AI to predict and analyze possible project outcomes more accurately.",
+    "Automate repetitive project tasks (like scheduling) to save time and reduce errors.",
+    "Let AI help you assign resources to the right tasks for maximum efficiency.",
+    "Leverage AI-powered natural language tools for fast, accurate documentation.",
+    "Uncover easy AI solutions that work for small organizations with limited tech support."
+  ]
+};
 
 const downloadRiskRegister = () => {
   const csvRows = [
@@ -485,6 +585,21 @@ const topicData: Record<string, {
   }
 };
 
+const topicImages: Record<string, string> = {
+  teams: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
+  risk: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=900&q=80",
+  leadership: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
+  ethics: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
+  sustainability: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80",
+  governance: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=900&q=80",
+  strategy: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=900&q=80",
+  planning: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+  implementation: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=900&q=80",
+  stakeholders: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
+  methodologies: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+  ai: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+};
+
 export default function TopicTemplate() {
   const { topicId } = useParams<{ topicId: string }>();
   const topic = topicId && topicData[topicId] ? topicData[topicId] : null;
@@ -502,32 +617,26 @@ export default function TopicTemplate() {
 
   const IconComponent = topic.icon;
 
-  const topicImages: Record<string, string> = {
-    teams: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
-    risk: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=900&q=80",
-    leadership: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
-    ethics: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
-    sustainability: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80",
-    governance: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=900&q=80",
-    strategy: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=900&q=80",
-    planning: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
-    implementation: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=900&q=80",
-    stakeholders: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80",
-    methodologies: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-    ai: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-  };
+  const topicMainImage = topicImages[topicId || "teams"] || topicImages["teams"];
+  const topicGraphicImage = `https://source.unsplash.com/600x200/?${encodeURIComponent(topic.title + ' project')}`;
 
   return (
     <Layout>
       <div className="relative mb-8">
         <img
-          src={topicImages[topicId || "teams"] || topicImages["teams"]}
+          src={topicMainImage}
           alt={topic.title + " illustration"}
           className="w-full h-60 md:h-80 object-cover rounded-lg shadow"
         />
         <div className="absolute top-4 left-4 bg-black/40 rounded-full p-2">
           <IconComponent size={40} className="text-white drop-shadow" />
         </div>
+        <img
+          src={topicGraphicImage}
+          alt={topic.title + " themed graphic"}
+          className="absolute -bottom-8 right-4 w-40 object-cover rounded-lg shadow-lg border-2 border-white hidden md:block"
+          style={{ zIndex: 9 }}
+        />
       </div>
       <TopicHero
         title={topic.title}
@@ -543,17 +652,24 @@ export default function TopicTemplate() {
 
         {topicId === "risk" && (
           <div className="max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl font-semibold mb-4">Download Risk Register</h2>
-            <p className="mb-4 text-muted-foreground">
-              Use this downloadable template to start managing risks for your project.
-            </p>
-            <div className="mb-4 flex gap-2">
-              <button
-                onClick={downloadRiskRegister}
-                className="bg-pmblue text-white px-5 py-2 rounded shadow hover:bg-pmblue-dark transition"
-              >
-                Download Risk Register (CSV)
-              </button>
+            <div className="flex flex-col md:flex-row items-center gap-6 mb-4">
+              <img
+                src="https://cdn.pixabay.com/photo/2017/01/31/13/13/planning-2026227_1280.png"
+                alt="Risk register visual"
+                className="w-32 h-32 object-contain rounded bg-white border shadow"
+              />
+              <div>
+                <h2 className="text-2xl font-semibold mb-2">Risk Register (Downloadable)</h2>
+                <p className="mb-2 text-muted-foreground">
+                  Use this ready-made template to keep track of project risks in seconds.
+                </p>
+                <button
+                  onClick={downloadRiskRegister}
+                  className="bg-pmblue text-white px-5 py-2 rounded shadow hover:bg-pmblue-dark transition"
+                >
+                  Download Risk Register (CSV)
+                </button>
+              </div>
             </div>
             <div className="overflow-auto border rounded-lg bg-white shadow mb-2">
               <table className="min-w-full text-sm">
@@ -599,13 +715,18 @@ export default function TopicTemplate() {
           <TabsContent value="overview">
             <div className="bg-card p-6 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold mb-4">Key Topics</h2>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {topic.keyPoints.map((point, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="h-6 w-6 rounded-full bg-pmblue flex items-center justify-center text-white mr-2 flex-shrink-0">
+                  <li key={index} className="flex flex-col md:flex-row items-start gap-2">
+                    <div className="h-8 w-8 rounded-full bg-pmblue flex items-center justify-center text-white mr-2 flex-shrink-0 font-bold text-lg">
                       {index + 1}
                     </div>
-                    <span>{point}</span>
+                    <div>
+                      <span className="font-medium">{point}</span>
+                      <div className="text-muted-foreground text-sm mt-1">
+                        {keyTopicExplanations[topicId as string]?.[index]}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -637,6 +758,9 @@ export default function TopicTemplate() {
             </div>
           </TabsContent>
         </Tabs>
+        <div className="max-w-2xl mx-auto my-20">
+          <ContactForm />
+        </div>
       </div>
     </Layout>
   );
