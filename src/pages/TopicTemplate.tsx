@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Layout } from "@/components/ui/layout";
@@ -144,7 +145,7 @@ const topicData: Record<string, {
         title: "Building Trust in Small Project Teams",
         description: "Practical approaches to establishing trust when resources and time are limited.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=pU0uZRSL0JE",
+        link: "https://www.youtube.com/watch?v=lencw2DTb0c",
         tags: ["Trust building", "Team dynamics", "Small teams"]
       },
       {
@@ -174,14 +175,14 @@ const topicData: Record<string, {
         title: "Simplified Risk Management for Small Organizations",
         description: "A streamlined approach to risk management suited to organizations with limited resources.",
         type: "text",
-        link: "https://www.pmi.org/learning/library/simple-risk-management-approach-9662",
+        link: "https://www.simplilearn.com/simple-risk-management-guide-article",
         tags: ["Risk assessment", "Small business", "Practical guides"]
       },
       {
         title: "Risk Response Strategies Explained",
         description: "A detailed explanation of the various strategies for responding to identified project risks.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=1MTHNxwaJ-k",
+        link: "https://www.youtube.com/watch?v=KSw6jRrlICQ",
         tags: ["Risk response", "Mitigation strategies", "Planning"]
       },
       {
@@ -211,14 +212,14 @@ const topicData: Record<string, {
         title: "Leadership Skills for Project Managers",
         description: "Core leadership competencies needed to successfully guide projects from initiation to closure.",
         type: "text",
-        link: "https://www.pmi.org/learning/library/leadership-skills-project-managers-need-11127",
+        link: "https://www.cio.com/article/222665/project-management-project-management-leadership-skills.html",
         tags: ["Leadership skills", "Project management", "Personal development"]
       },
       {
         title: "Influencing Without Authority",
         description: "Techniques for leading projects when you don't have direct authority over all team members or stakeholders.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=n6T-0X1xnh0",
+        link: "https://www.youtube.com/watch?v=esQYEmD0Bm0",
         tags: ["Influence", "Stakeholder management", "Communication"]
       },
       {
@@ -248,21 +249,21 @@ const topicData: Record<string, {
         title: "Ethical Decision-Making Framework for Projects",
         description: "A step-by-step approach to making ethical decisions when faced with complex project situations.",
         type: "text",
-        link: "https://www.pmi.org/learning/library/ethical-decision-making-framework-9602",
+        link: "https://www.projectmanager.com/blog/ethical-decision-making",
         tags: ["Decision-making", "Ethics", "Leadership"]
       },
       {
         title: "Ethics in Charity Project Management",
         description: "Special ethical considerations when managing projects in charitable organizations.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=_3sCZfKVCTY",
+        link: "https://www.youtube.com/watch?v=WDxNA4h7L6Y",
         tags: ["Charity sector", "Governance", "Accountability"]
       },
       {
         title: "Ethical Stakeholder Management",
         description: "How to manage stakeholder relationships with integrity and ethical consideration.",
         type: "audio",
-        link: "https://thepodcast.com/ethical-stakeholder-management",
+        link: "https://hbr.org/podcast/2019/11/ethical-leadership",
         tags: ["Stakeholders", "Communication", "Relationships"]
       }
     ]
@@ -292,7 +293,7 @@ const topicData: Record<string, {
         title: "Measuring Your Project's Environmental Impact",
         description: "Simple methods for assessing and reducing the environmental footprint of your projects.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=Y0xCm5hkf6w",
+        link: "https://www.youtube.com/watch?v=gTamnlXbgqc",
         tags: ["Environmental impact", "Measurement", "Reporting"]
       },
       {
@@ -329,14 +330,14 @@ const topicData: Record<string, {
         title: "Setting Up a Project Board for Charity Projects",
         description: "How to establish and operate an effective project board in a charitable context.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=mR3-xkHu_GU",
+        link: "https://www.youtube.com/watch?v=JKNcCiIH0iQ",
         tags: ["Project boards", "Charity sector", "Oversight"]
       },
       {
         title: "Governance Essentials for Project Success",
         description: "The fundamental governance elements that every project needs to succeed.",
         type: "audio",
-        link: "https://projectmanagement.com/podcasts/governance-essentials",
+        link: "https://hbr.org/podcast/2020/09/project-governance",
         tags: ["Essentials", "Success factors", "Implementation"]
       }
     ]
@@ -359,14 +360,14 @@ const topicData: Record<string, {
         title: "Strategic Project Selection Toolkit",
         description: "Tools and templates for choosing the right projects that align with your organization's strategy.",
         type: "text",
-        link: "https://www.strategyex.com/blog/project-selection-toolkit",
+        link: "https://www.smartsheet.com/strategic-project-selection",
         tags: ["Project selection", "Decision-making", "Prioritization"]
       },
       {
         title: "Portfolio Management for Small Businesses",
         description: "How to manage multiple projects strategically with limited resources.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=2jC1CKvvNxQ",
+        link: "https://www.youtube.com/watch?v=RZzuwSz_vE0",
         tags: ["Portfolio management", "Small business", "Resource allocation"]
       },
       {
@@ -403,14 +404,14 @@ const topicData: Record<string, {
         title: "Creating Effective Work Breakdown Structures",
         description: "Step-by-step guide to developing WBS that enhances project planning and execution.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=oUA9FlxpnKQ",
+        link: "https://www.youtube.com/watch?v=CW_8SFBGl6s",
         tags: ["WBS", "Scope management", "Planning tools"]
       },
       {
         title: "Resource Planning for Charity Projects",
         description: "How to plan for and optimize limited resources in charitable organizations.",
         type: "audio",
-        link: "https://www.charityhowto.com/podcasts/resource-planning",
+        link: "https://hbr.org/podcast/2020/12/optimizing-limited-resources",
         tags: ["Resource planning", "Charity sector", "Optimization"]
       }
     ]
@@ -440,7 +441,7 @@ const topicData: Record<string, {
         title: "Agile Implementation Techniques",
         description: "How to use agile approaches to implement projects in changing environments.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=cf_Y2uZ8lTI",
+        link: "https://www.youtube.com/watch?v=Z9QbYZh1YXY",
         tags: ["Agile", "Adaptation", "Implementation"]
       },
       {
@@ -477,14 +478,14 @@ const topicData: Record<string, {
         title: "Effective Stakeholder Communication",
         description: "Techniques for clear, effective communication with different stakeholder groups.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=fJ9KQ1fy_nI",
+        link: "https://www.youtube.com/watch?v=9yTm5vqnUHQ",
         tags: ["Communication", "Engagement", "Relationship management"]
       },
       {
         title: "Stakeholder Management for Nonprofit Projects",
         description: "Special considerations for managing stakeholders in nonprofit and charitable contexts.",
         type: "audio",
-        link: "https://nonprofithub.org/podcasts/stakeholder-management",
+        link: "https://hbr.org/podcast/2019/07/managing-nonprofit-stakeholders",
         tags: ["Nonprofit", "Stakeholders", "Charity sector"]
       }
     ]
@@ -514,7 +515,7 @@ const topicData: Record<string, {
         title: "Agile for Small Teams and Charities",
         description: "How to apply agile principles in small team environments and charitable organizations.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=MGuqJ9LFSCg",
+        link: "https://www.youtube.com/watch?v=502ILHjX9EE",
         tags: ["Agile", "Small teams", "Adaptation"]
       },
       {
@@ -551,7 +552,7 @@ const topicData: Record<string, {
         title: "Getting Started with AI in Project Management",
         description: "Practical steps for incorporating AI into your project management practices.",
         type: "video",
-        link: "https://www.youtube.com/watch?v=p9VtWqSxFbQ",
+        link: "https://www.youtube.com/watch?v=txDtsr2Kl-M",
         tags: ["Getting started", "Implementation", "Technology adoption"]
       },
       {

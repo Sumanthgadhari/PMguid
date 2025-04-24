@@ -5,6 +5,7 @@ import { FileText, Video, Headphones, BookOpen, ExternalLink } from "lucide-reac
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 type ResourceType = "video" | "audio" | "text" | "book";
 
@@ -55,6 +56,17 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
     }
   };
 
+  const handleResourceClick = () => {
+    // Check if the link is valid before opening
+    if (!link || link.includes("thepodcast.com") || link.includes("projectmanagement.com/podcasts") || 
+        link.includes("charityhowto.com/podcasts") || link.includes("nonprofithub.org/podcasts")) {
+      toast.warning("This resource is currently unavailable. Please try another one.");
+      return;
+    }
+    
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Card className={cn("overflow-hidden card-hover", className)}>
       <CardHeader className="pb-2">
@@ -79,11 +91,16 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
         )}
       </CardContent>
       <CardFooter>
-        <Button asChild variant="outline" size="sm" className="w-full">
-          <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="w-full"
+          onClick={handleResourceClick}
+        >
+          <span className="flex items-center gap-1">
             <span>View Resource</span>
             <ExternalLink className="h-3 w-3" />
-          </a>
+          </span>
         </Button>
       </CardFooter>
     </Card>
