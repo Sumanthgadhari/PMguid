@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/ui/layout";
 import { Link } from "react-router-dom";
@@ -85,6 +86,25 @@ const resourceTypeIcons = {
   audio: <Headphones className="h-5 w-5" />,
 };
 
+// Define working resource links
+const resources = {
+  video: [
+    "https://www.youtube.com/watch?v=n5dMQVG1TNk", // PM for Small Business
+    "https://www.youtube.com/watch?v=6gGnMlCB734", // Nonprofit PM
+    "https://www.youtube.com/watch?v=TiZxPi5TlgI"  // PM for Charities
+  ],
+  text: [
+    "https://hbr.org/2016/11/the-four-phases-of-project-management",
+    "https://www.pmi.org/learning/library/small-business-project-management-9857",
+    "https://www.techsoup.org/support/articles-and-how-tos/project-management-for-nonprofits"
+  ],
+  audio: [
+    "https://hbr.org/podcast/2022/05/managing-projects-without-losing-your-cool",
+    "https://www.youtube.com/watch?v=5IviUurSLak", // PM podcast on YouTube
+    "https://www.linkedin.com/learning/project-management-foundations-small-projects"
+  ]
+};
+
 export default function Index() {
   return (
     <Layout>
@@ -133,7 +153,6 @@ export default function Index() {
               key={card.title} 
               to={card.href}
               className="border rounded-lg p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-[#1A1F2C]"
-              // Dark background for card
             >
               <div className="h-12 w-12 rounded-full bg-pmblue/10 text-pmblue flex items-center justify-center mb-4">
                 <card.icon className="h-6 w-6" />
@@ -170,6 +189,14 @@ export default function Index() {
                 <p className="text-gray-700">
                   Comprehensive articles, templates, and checklists for detailed learning.
                 </p>
+                <a 
+                  href={resources.text[0]} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-pmblue hover:underline"
+                >
+                  Example resource
+                </a>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
@@ -180,6 +207,14 @@ export default function Index() {
                 <p className="text-gray-700">
                   Visual demonstrations and expert interviews for visual learners.
                 </p>
+                <a 
+                  href={resources.video[0]} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-pmblue hover:underline"
+                >
+                  Example resource
+                </a>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
@@ -190,6 +225,14 @@ export default function Index() {
                 <p className="text-gray-700">
                   Podcasts and audio guides for learning on the go.
                 </p>
+                <a 
+                  href={resources.audio[0]} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-pmblue hover:underline"
+                >
+                  Example resource
+                </a>
               </div>
             </div>
           </div>

@@ -42,7 +42,8 @@ export function Layout({ children }: LayoutProps) {
     <ThemeProvider>
       <SidebarProvider>
         <div className="min-h-screen flex w-full">
-          <Sidebar className="border-r bg-white">
+          {/* The sidebar with proper styling for dark mode */}
+          <Sidebar className="border-r bg-sidebar">
             <SidebarContent>
               <div className="p-4">
                 <Link to="/" className="flex items-center gap-2">
