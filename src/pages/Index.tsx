@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/ui/layout";
 import { Link } from "react-router-dom";
@@ -136,7 +135,7 @@ export default function Index() {
       </section>
       
       <section className="py-16 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-12">
+        <div className="max-w-4xl mx-auto text-center mb-12 animate-slide-up">
           <h2 className="text-3xl font-bold mb-4">Helping Organizations Get Stuff Done Better</h2>
           <p className="text-lg text-muted-foreground">
             This guide provides practical resources for small businesses and charities in Ireland to improve their project management capabilities.
@@ -148,11 +147,12 @@ export default function Index() {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topicCards.map((card) => (
+          {topicCards.map((card, index) => (
             <Link 
               key={card.title} 
               to={card.href}
-              className="border rounded-lg p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-[#1A1F2C]"
+              className="border rounded-lg p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-[#1A1F2C] animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="h-12 w-12 rounded-full bg-pmblue/10 text-pmblue flex items-center justify-center mb-4">
                 <card.icon className="h-6 w-6" />
@@ -170,7 +170,7 @@ export default function Index() {
       
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto animate-slide-up">
             <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">Resource Types</h2>
             <p className="text-lg text-gray-700 text-center mb-12">
               Our guide includes a variety of resource formats to suit different learning preferences.
@@ -240,7 +240,7 @@ export default function Index() {
       </section>
       
       <section className="py-16 container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-3xl font-bold mb-4 text-white">Why This Guide?</h2>
           <p className="text-lg mb-4 text-gray-300">
             Created specifically for Irish small businesses and charities, this guide addresses the unique challenges you face.
@@ -253,7 +253,7 @@ export default function Index() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-6 rounded-lg shadow-sm animate-scale">
             <h3 className="text-xl font-medium mb-3 text-gray-900">For Small Businesses</h3>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
@@ -275,7 +275,7 @@ export default function Index() {
             </ul>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-6 rounded-lg shadow-sm animate-scale" style={{ animationDelay: "0.2s" }}>
             <h3 className="text-xl font-medium mb-3 text-gray-900">For Charities</h3>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
@@ -300,7 +300,7 @@ export default function Index() {
       </section>
       
       <section className="py-16 bg-pmblue text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center animate-fade-in">
           <h2 className="text-3xl font-bold mb-8">Ready to improve your project management?</h2>
           <Button size="lg" asChild className="bg-white text-pmblue hover:bg-gray-100">
             <Link to="/topic/teams">Explore Topics Now</Link>
@@ -309,7 +309,7 @@ export default function Index() {
       </section>
 
       <section className="py-16 container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto animate-slide-up">
           <ContactForm />
         </div>
       </section>
