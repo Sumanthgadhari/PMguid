@@ -85,7 +85,6 @@ const resourceTypeIcons = {
   audio: <Headphones className="h-5 w-5" />,
 };
 
-// Define working resource links
 const resources = {
   video: [
     "https://www.youtube.com/watch?v=n5dMQVG1TNk", // PM for Small Business
