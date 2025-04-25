@@ -1,9 +1,19 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-import { SidebarTrigger, SidebarProvider } from "@/components/ui/sidebar";
-import { Briefcase, Home, Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit, Menu } from "lucide-react";
+import { 
+  Sidebar, 
+  SidebarContent, 
+  SidebarGroup, 
+  SidebarGroupContent, 
+  SidebarGroupLabel, 
+  SidebarMenu, 
+  SidebarMenuButton, 
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger
+} from "@/components/ui/sidebar";
+import { Menu, Briefcase, Home, Users, Shield, User, Leaf, Gavel, BarChart2, Calendar, ArrowDownWideNarrow, Handshake, Layers, BrainCircuit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
 
