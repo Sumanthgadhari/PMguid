@@ -40,7 +40,7 @@ const navItems = [
 export function Layout({ children }: LayoutProps) {
   return (
     <ThemeProvider>
-      <SidebarProvider>
+      <SidebarProvider defaultOpen={false}>
         <div className="min-h-screen flex w-full">
           {/* The sidebar with proper styling for dark mode */}
           <Sidebar className="border-r bg-sidebar">
@@ -97,3 +97,4 @@ export function Layout({ children }: LayoutProps) {
     </ThemeProvider>
   );
 }
+
