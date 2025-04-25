@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/project-management-guide/', // Add this line
+  base: '/',  // Changed this line to root path
   server: {
     host: "::",
     port: 8080,
