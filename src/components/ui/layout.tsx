@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -42,7 +41,6 @@ export function Layout({ children }: LayoutProps) {
     <ThemeProvider>
       <SidebarProvider defaultOpen={false}>
         <div className="min-h-screen flex w-full">
-          {/* The sidebar with proper styling for dark mode */}
           <Sidebar className="border-r bg-sidebar">
             <SidebarContent>
               <div className="p-4">
@@ -73,11 +71,9 @@ export function Layout({ children }: LayoutProps) {
           
           <div className="flex-1 flex flex-col">
             <header className="border-b p-4 bg-white flex justify-between items-center">
-              <SidebarTrigger>
-                <Button variant="ghost" size="icon">
-                  <Menu size={20} />
-                </Button>
-              </SidebarTrigger>
+              <div className="flex items-center">
+                <SidebarTrigger className="block" />
+              </div>
               <div className="font-medium">A Guide to Project Management</div>
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm" asChild>
@@ -97,4 +93,3 @@ export function Layout({ children }: LayoutProps) {
     </ThemeProvider>
   );
 }
-
