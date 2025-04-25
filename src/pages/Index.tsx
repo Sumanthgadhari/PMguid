@@ -241,8 +241,8 @@ export default function Index() {
       
       <section className="py-16 container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900">Why This Guide?</h2>
-          <p className="text-lg mb-4 text-gray-700">
+          <h2 className="text-3xl font-bold mb-4 text-white">Why This Guide?</h2>
+          <p className="text-lg mb-4 text-gray-300">
             Created specifically for Irish small businesses and charities, this guide addresses the unique challenges you face.
           </p>
           <img
