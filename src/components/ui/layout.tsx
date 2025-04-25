@@ -73,11 +73,19 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex-1 flex flex-col">
             <header className="border-b p-4 bg-white flex justify-between items-center">
               <div className="flex items-center">
-                <SidebarTrigger asChild>
-                  <Button variant="ghost" size="icon" className="block">
-                    <Menu size={20} />
-                  </Button>
-                </SidebarTrigger>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="block"
+                  onClick={() => {
+                    const triggerButton = document.querySelector('[data-sidebar="trigger"]');
+                    if (triggerButton instanceof HTMLElement) {
+                      triggerButton.click();
+                    }
+                  }}
+                >
+                  <Menu size={20} />
+                </Button>
               </div>
               <div className="font-medium">A Guide to Project Management</div>
               <div className="flex items-center gap-2">
