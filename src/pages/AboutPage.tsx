@@ -16,7 +16,7 @@ export default function AboutPage() {
         <div className="prose prose-lg max-w-none prose-invert">
           <p>
             This project management guide has been created specifically for small businesses and charities operating in Ireland. 
-            Our goal is to provide accessible, practical resources that help organizations deliver projects more effectively, 
+            The goal is to provide accessible, practical resources that help organizations deliver projects more effectively, 
             with limited resources and unique constraints.
           </p>
           
@@ -74,7 +74,7 @@ export default function AboutPage() {
             small organizations in Ireland.
           </p>
           
-          <h2>Our Sources</h2>
+          <h2>Sources</h2>
           <p>
             The resources in this guide include both originally created content and carefully selected external resources from:
           </p>
