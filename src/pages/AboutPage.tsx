@@ -1,20 +1,19 @@
-
 import { Layout } from "@/components/ui/layout";
 import { Briefcase } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="container mx-auto px-4 py-12 max-w-4xl text-white">
         <div className="flex items-center justify-center mb-8">
           <div className="h-16 w-16 rounded-full bg-pmblue/10 text-pmblue flex items-center justify-center">
             <Briefcase className="h-8 w-8" />
           </div>
         </div>
         
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">About This Project Management Guide</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-white">About This Project Management Guide</h1>
         
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none prose-invert">
           <p>
             This project management guide has been created specifically for small businesses and charities operating in Ireland. 
             Our goal is to provide accessible, practical resources that help organizations deliver projects more effectively, 
