@@ -14,6 +14,10 @@ const root = createRoot(rootElement);
 // Add console log to help debug
 console.log('Rendering app to root element');
 console.log('Current URL:', window.location.href);
+console.log('Page loaded with path:', window.location.pathname);
+console.log('Page loaded with hash:', window.location.hash);
+console.log('Page loaded with search:', window.location.search);
+console.log('Base path:', import.meta.env.BASE_URL);
 
 // Add global error handler
 window.addEventListener('error', (event) => {

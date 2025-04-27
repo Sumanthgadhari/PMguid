@@ -49,6 +49,8 @@ const App = () => {
     console.log('Base URL:', import.meta.env.BASE_URL);
     console.log('Public URL:', import.meta.env.PUBLIC_URL || 'Not defined');
     console.log('Environment:', import.meta.env.MODE);
+    console.log('Hash:', window.location.hash);
+    console.log('Search:', window.location.search);
   }, []);
   
   return (
