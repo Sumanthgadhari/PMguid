@@ -70,7 +70,7 @@ export function Layout({ children }: LayoutProps) {
           </Sidebar>
           
           <div className="flex-1 flex flex-col">
-            <header className="border-b p-4 bg-white flex justify-between items-center">
+            <header className="border-b p-4 bg-black text-white flex justify-between items-center">
               <div className="flex items-center">
                 <SidebarTrigger className="block" />
               </div>
