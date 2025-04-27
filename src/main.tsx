@@ -10,4 +10,7 @@ if (!rootElement) {
 }
 
 const root = createRoot(rootElement);
+
+// Add console log to help debug
+console.log('Rendering app to root element');
 root.render(<App />);

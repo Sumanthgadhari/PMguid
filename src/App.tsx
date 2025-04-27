@@ -9,7 +9,11 @@ import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 import TopicTemplate from "./pages/TopicTemplate";
 
+// Create a new QueryClient instance
 const queryClient = new QueryClient();
+
+// Add console log to help debug
+console.log('App component rendering');
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
