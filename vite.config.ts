@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/PMguid/', // This is critical for GitHub Pages
+  base: '/PMguide/', // Updated base path to match GitHub Pages URL
   server: {
     host: "::",
     port: 8080,
@@ -23,11 +23,10 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true, // Enable source maps for better debugging
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor code to reduce main chunk size
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['@/components/ui'],
         }
